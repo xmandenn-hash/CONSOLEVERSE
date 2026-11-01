@@ -1224,5 +1224,541 @@ document.getElementById("enterBtn").onclick = cvShowDatabase;
     gap:6px;
   }
 }
+
+<!-- ==========================================
+     CONSOLEVERSE — SUPER NINTENDO
+     COMPLETE SNES PAGE
+========================================== -->
+
+<style>
+#cvSNES {
+  display: none;
+  color: #eee;
+  background: #17151e;
+  min-height: 100vh;
+  padding: 30px 6%;
+  font-family: Arial, sans-serif;
+}
+
+#cvSNES .snes-back {
+  background: #a52b55;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+#cvSNES .snes-title {
+  font-size: clamp(30px, 5vw, 52px);
+  color: #e6b8e9;
+  margin: 10px 0;
+}
+
+#cvSNES .snes-subtitle {
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+#cvSNES .snes-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+#cvSNES .snes-hero img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  background: #24212d;
+  border-radius: 14px;
+  padding: 15px;
+}
+
+#cvSNES .snes-fact-image {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  height: 240px;
+  object-fit: contain;
+  margin: 15px auto 25px;
+  background: #24212d;
+  border-radius: 14px;
+  padding: 12px;
+}
+
+#cvSNES .snes-section {
+  margin: 35px 0;
+}
+
+#cvSNES .snes-section h2 {
+  color: #e6b8e9;
+  border-bottom: 2px solid #704c79;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+#cvSNES .snes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 15px;
+}
+
+#cvSNES .snes-card {
+  background: #262330;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #40384a;
+}
+
+#cvSNES .snes-card h3 {
+  color: #f0c9f2;
+  margin-top: 0;
+}
+
+#cvSNES .snes-card p {
+  color: #ccc;
+  line-height: 1.5;
+}
+
+#cvSNES .snes-stat {
+  font-size: 25px;
+  font-weight: bold;
+  color: #f2c6f4 !important;
+}
+
+#cvSNES .snes-games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+#cvSNES .snes-game {
+  background: #302a39;
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#cvSNES .snes-footer {
+  text-align: center;
+  color: #888;
+  padding: 30px 0;
+}
+
+#cvSNESCard img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+@media(max-width:600px) {
+  #cvSNES {
+    padding: 20px 5%;
+  }
+}
+</style>
+
+<!-- ==========================================
+     DATABASE DIRECTORY CARD
+========================================== -->
+
+<script>
+(function() {
+  function addSNESCard() {
+    const database = document.querySelector("#cvDatabase");
+    const firstCard = database?.querySelector(".cv-console-card");
+
+    if (!database || !firstCard ||
+        document.getElementById("cvSNESCard")) return;
+
+    firstCard.insertAdjacentHTML("afterend", `
+      <div class="cv-console-card" id="cvSNESCard"
+           onclick="cvOpenSNES()"
+           style="cursor:pointer;">
+
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/SNES-Mod1-Console-Set.png"
+          alt="Super Nintendo console">
+
+        <h3>Super Nintendo Entertainment System</h3>
+        <p>SNES • 1990 / 1991</p>
+        <p>16-bit gaming. Mode 7. Legendary games.</p>
+        <strong>Explore Console →</strong>
+      </div>
+    `);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", addSNESCard);
+  } else {
+    addSNESCard();
+  }
+})();
+</script>
+
+<!-- ==========================================
+     SNES INFORMATION PAGE
+========================================== -->
+
+<section id="cvSNES">
+
+  <button class="snes-back" onclick="cvShowDatabase()">
+    ← Back to Database
+  </button>
+
+  <h1 class="snes-title">
+    Super Nintendo Entertainment System
+  </h1>
+
+  <p class="snes-subtitle">
+    Nintendo's legendary 16-bit console • 1990–2003
+  </p>
+
+  <!-- INTRODUCTION -->
+
+  <div class="snes-hero">
+
+    <div>
+      <h2>The 16-bit revolution.</h2>
+
+      <p>
+        The Super Nintendo Entertainment System, also known as the SNES,
+        was Nintendo's successor to the NES. It brought improved graphics,
+        sound, and gameplay to the home console market.
+      </p>
+
+      <p>
+        With iconic games and innovative hardware, the SNES became
+        one of the most beloved consoles in gaming history.
+      </p>
+    </div>
+
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/SNES-Mod1-Console-Set.png"
+      alt="Super Nintendo Entertainment System console">
+  </div>
+
+  <!-- CONSOLE FACTS -->
+
+  <div class="snes-section">
+    <h2>Console overview</h2>
+
+    <img
+      class="snes-fact-image"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/SNES-Mod1-Console-Set.png"
+      alt="SNES console">
+
+    <div class="snes-grid">
+
+      <div class="snes-card">
+        <h3>Release</h3>
+        <p>Japan: November 21, 1990</p>
+        <p>North America: August 23, 1991</p>
+        <p>Europe: 1992</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Manufacturer</h3>
+        <p>Nintendo</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Generation</h3>
+        <p>Fourth generation</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Successor</h3>
+        <p>Nintendo 64</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Japanese name</h3>
+        <p>Super Famicom</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Media</h3>
+        <p>Game cartridges</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HARDWARE -->
+
+  <div class="snes-section">
+    <h2>Hardware specifications</h2>
+
+    <div class="snes-grid">
+
+      <div class="snes-card">
+        <h3>CPU</h3>
+        <p>Ricoh 5A22</p>
+        <p>16-bit processor</p>
+        <p>Up to approximately 3.58 MHz</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Main RAM</h3>
+        <p class="snes-stat">128 KB</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Video RAM</h3>
+        <p class="snes-stat">64 KB</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Audio RAM</h3>
+        <p class="snes-stat">64 KB</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Resolution</h3>
+        <p>Commonly 256 × 224 pixels</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Color palette</h3>
+        <p>32,768 possible colors</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Sound</h3>
+        <p>8-channel Sony-designed audio system</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Storage</h3>
+        <p>Cartridges</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTROLLER -->
+
+  <div class="snes-section">
+    <h2>The controller</h2>
+
+    <div class="snes-hero">
+
+      <div>
+        <h3>The iconic six-button layout</h3>
+
+        <p>
+          The SNES controller featured four face buttons,
+          two shoulder buttons, a D-pad, Start and Select.
+        </p>
+
+        <p>
+          Its design influenced many controller layouts
+          that came after it.
+        </p>
+      </div>
+
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/SNES-Controller.jpg"
+        alt="SNES controller">
+    </div>
+  </div>
+
+  <!-- GAMES -->
+
+  <div class="snes-section">
+    <h2>Iconic games</h2>
+
+    <div class="snes-games">
+      <div class="snes-game">Super Mario World</div>
+      <div class="snes-game">The Legend of Zelda: A Link to the Past</div>
+      <div class="snes-game">Super Metroid</div>
+      <div class="snes-game">Donkey Kong Country</div>
+      <div class="snes-game">Final Fantasy VI</div>
+      <div class="snes-game">Super Mario Kart</div>
+    </div>
+  </div>
+
+  <!-- SALES -->
+
+  <div class="snes-section">
+    <h2>Sales performance</h2>
+
+    <div class="snes-grid">
+
+      <div class="snes-card">
+        <h3>Console sales</h3>
+        <p class="snes-stat">49.10 million</p>
+        <p>Worldwide hardware sales</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Software sales</h3>
+        <p class="snes-stat">379.06 million</p>
+        <p>Reported game sales</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TECHNOLOGY -->
+
+  <div class="snes-section">
+    <h2>Technology that mattered</h2>
+
+    <div class="snes-grid">
+
+      <div class="snes-card">
+        <h3>Mode 7</h3>
+        <p>
+          A graphics mode capable of rotating and scaling a background
+          layer. It helped create effects like the racing tracks
+          in Super Mario Kart.
+        </p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Super FX</h3>
+        <p>
+          An additional cartridge chip that helped produce
+          advanced graphics, including 3D effects.
+        </p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Enhancement chips</h3>
+        <p>
+          Certain cartridges included extra hardware to expand
+          the console's capabilities.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+
+  <div class="snes-section">
+    <h2>History timeline</h2>
+
+    <div class="snes-card">
+      <h3>1990 — Japanese launch</h3>
+      <p>The Super Famicom launches in Japan.</p>
+    </div>
+
+    <div class="snes-card">
+      <h3>1991 — North American launch</h3>
+      <p>The SNES arrives in North America.</p>
+    </div>
+
+    <div class="snes-card">
+      <h3>1992 — European launch</h3>
+      <p>The console expands into Europe.</p>
+    </div>
+
+    <div class="snes-card">
+      <h3>1996 — Nintendo 64</h3>
+      <p>Nintendo launches its next home console in Japan.</p>
+    </div>
+  </div>
+
+  <!-- STRENGTHS AND WEAKNESSES -->
+
+  <div class="snes-section">
+    <h2>Strengths & weaknesses</h2>
+
+    <div class="snes-grid">
+
+      <div class="snes-card">
+        <h3>Strengths</h3>
+        <p>✓ Excellent 2D graphics</p>
+        <p>✓ Memorable sound and music</p>
+        <p>✓ Fantastic game library</p>
+        <p>✓ Innovative graphics features</p>
+        <p>✓ Comfortable controller layout</p>
+      </div>
+
+      <div class="snes-card">
+        <h3>Weaknesses</h3>
+        <p>✗ Limited 3D capabilities</p>
+        <p>✗ Some games needed enhancement chips</p>
+        <p>✗ Relatively slow CPU clock</p>
+        <p>✗ Cartridge storage limitations</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FINAL VERDICT -->
+
+  <div class="snes-section">
+    <h2>Final verdict</h2>
+
+    <div class="snes-card">
+      <p>
+        The SNES was a massive step forward from the NES.
+        Its graphics, sound, controller, and legendary game library
+        helped define the 16-bit generation.
+      </p>
+
+      <p>
+        Even today, it remains one of Nintendo's most important consoles.
+      </p>
+    </div>
+  </div>
+
+  <div class="snes-footer">
+    CONSOLEVERSE • SUPER NINTENDO ENTERTAINMENT SYSTEM
+  </div>
+
+</section>
+
+<!-- ==========================================
+     NAVIGATION — FIXED
+========================================== -->
+
+<script>
+function cvHidePages() {
+  document.querySelector(".hero").style.display = "none";
+  document.getElementById("cvDatabase").style.display = "none";
+  document.getElementById("cvNES").style.display = "none";
+  document.getElementById("cvSNES").style.display = "none";
+}
+
+function cvGoHome() {
+  cvHidePages();
+  document.querySelector(".hero").style.display = "flex";
+  window.scrollTo(0, 0);
+}
+
+function cvShowDatabase() {
+  cvHidePages();
+  document.getElementById("cvDatabase").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+function cvOpenNES() {
+  cvHidePages();
+  document.getElementById("cvNES").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+function cvOpenSNES() {
+  cvHidePages();
+  document.getElementById("cvSNES").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+document.getElementById("enterBtn").onclick = cvShowDatabase;
+</script>
+
 </body>
 </html>
