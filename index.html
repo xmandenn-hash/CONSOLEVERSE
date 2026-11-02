@@ -1760,5 +1760,1606 @@ function cvOpenSNES() {
 document.getElementById("enterBtn").onclick = cvShowDatabase;
 </script>
 
+<!-- ==========================================
+     CONSOLEVERSE 1.1 UPDATE
+     N64 + ACCOUNTS + COMMENTS + VISITOR COUNTER
+     ========================================== -->
+
+<style>
+#cv11 {
+  color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+#cv11 button {
+  background: #9c2435;
+  color: white;
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+}
+#cv11 button:hover { background: #c33349; }
+#cv11 input, #cv11 textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px;
+  margin: 5px 0 10px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background: #171717;
+  color: white;
+}
+#cv11 .cv11-panel {
+  background: #202020;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 15px 0;
+}
+#cv11 .cv11-muted { color: #aaa; }
+#cv11 .cv11-comment {
+  border-bottom: 1px solid #444;
+  padding: 12px 0;
+}
+#cv11 .cv11-comment:last-child { border: 0; }
+#cv11 .cv11-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 15px;
+}
+#cv11 .cv11-stat {
+  font-size: 28px;
+  color: #ffcc55;
+  font-weight: bold;
+}
+#cvN64 {
+  display: none;
+  background: #111;
+  color: white;
+  padding: 25px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+#cvN64 h1 { color: #70d889; }
+#cvN64 h2 { color: #ffcc55; }
+#cvN64 img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+#cvN64 .cvn64-panel {
+  background: #202020;
+  padding: 18px;
+  margin: 15px 0;
+  border-radius: 12px;
+}
+#cvN64 .cvn64-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 15px;
+}
+</style>
+
+<div id="cv11">
+
+  <!-- TITLE SCREEN COMMUNITY AREA -->
+  <section class="cv11-panel" id="cv11-community">
+    <h2>💬 CONSOLEVERSE COMMUNITY</h2>
+    <p class="cv11-muted">Join the discussion. Share your thoughts about gaming!</p>
+
+    <div class="cv11-grid">
+      <div>
+        <div class="cv11-muted">Website visits</div>
+        <div class="cv11-stat" id="cv11-views">Loading...</div>
+      </div>
+      <div>
+        <div class="cv11-muted">Account status</div>
+        <div id="cv11-status">Not logged in</div>
+      </div>
+    </div>
+
+    <div class="cv11-panel" id="cv11-account">
+      <h3>Account</h3>
+      <label>Username</label>
+      <input id="cv11-username" maxlength="24" placeholder="Your username">
+      <label>Password</label>
+      <input id="cv11-password" type="password" placeholder="Your password">
+
+      <button onclick="cv11Register()">Create account</button>
+      <button onclick="cv11Login()">Log in</button>
+      <button onclick="cv11Logout()" id="cv11-logout" style="display:none">Log out</button>
+      <p id="cv11-account-message" class="cv11-muted"></p>
+    </div>
+
+    <div class="cv11-panel">
+      <h3>Leave a comment</h3>
+      <textarea id="cv11-message" maxlength="500"
+        placeholder="What do you think of CONSOLEVERSE?"></textarea>
+      <button onclick="cv11PostComment()">Post comment</button>
+      <div id="cv11-comment-message" class="cv11-muted"></div>
+    </div>
+
+    <h3>Community comments</h3>
+    <div id="cv11-comments">Loading comments...</div>
+  </section>
+</div>
+
+<!-- NINTENDO 64 PAGE -->
+<section id="cvN64">
+  <button onclick="cvGoHome()">← Home</button>
+  <button onclick="cvShowDatabase()">← Console database</button>
+
+  <h1>NINTENDO 64</h1>
+  <p>The 64-bit generation. Nintendo's leap into 3D gaming.</p>
+
+  <img
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Nintendo-64-Console-Set.png"
+    alt="Nintendo 64 console"
+    style="width:100%;max-width:600px;display:block;margin:20px auto;">
+
+  <div class="cvn64-panel">
+    <h2>Console overview</h2>
+    <p>The Nintendo 64 launched in 1996 in Japan and North America,
+    bringing fully 3D gaming to Nintendo's home console lineup.</p>
+    <p>It used cartridges instead of CDs and introduced a distinctive
+    three-pronged controller with an analog stick.</p>
+  </div>
+
+  <div class="cvn64-panel">
+    <h2>Specifications</h2>
+    <div class="cvn64-grid">
+      <div><b>CPU</b><br>64-bit NEC VR4300</div>
+      <div><b>CPU speed</b><br>93.75 MHz</div>
+      <div><b>Memory</b><br>4 MB RDRAM</div>
+      <div><b>Expandable memory</b><br>Expansion Pak: 8 MB total</div>
+      <div><b>Media</b><br>Cartridges</div>
+      <div><b>Graphics</b><br>Reality Co-Processor</div>
+      <div><b>Resolution</b><br>Variable; commonly 320×240</div>
+      <div><b>Generation</b><br>Fifth generation</div>
+    </div>
+  </div>
+
+  <div class="cvn64-panel">
+    <h2>The controller</h2>
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Nintendo-64-Controller-Gray.jpg"
+      alt="Nintendo 64 controller"
+      style="width:100%;max-width:450px;">
+    <p>The N64 controller featured an analog stick, a D-pad,
+    a central Z button, and the famous A and B buttons.</p>
+  </div>
+
+  <div class="cvn64-panel">
+    <h2>Iconic games</h2>
+    <div class="cvn64-grid">
+      <div><b>Super Mario 64</b><p>A landmark 3D platformer.</p></div>
+      <div><b>The Legend of Zelda: Ocarina of Time</b><p>A legendary adventure.</p></div>
+      <div><b>GoldenEye 007</b><p>A major console shooter.</p></div>
+      <div><b>Mario Kart 64</b><p>Four-player racing chaos.</p></div>
+      <div><b>Super Smash Bros.</b><p>The beginning of the crossover fighter series.</p></div>
+      <div><b>Banjo-Kazooie</b><p>A colorful 3D platformer.</p></div>
+    </div>
+  </div>
+
+  <div class="cvn64-panel">
+    <h2>Legacy</h2>
+    <p>The Nintendo 64 helped popularize analog-controlled 3D
+    platforming, local multiplayer, and 3D adventure games.</p>
+    <p><b>Hardware sales:</b> approximately 32.93 million units.</p>
+  </div>
+
+  <button onclick="cvShowDatabase()">Back to database</button>
+</section>
+
+<script>
+/* ==========================================
+   CONFIGURATION
+   REPLACE THIS WITH YOUR POCKETBASE ADDRESS
+   Example: https://your-server.example.com
+   ========================================== */
+
+const CV11_BACKEND = "YOUR_POCKETBASE_URL";
+
+/* PocketBase API helper */
+async function cv11API(path, options = {}) {
+  const token = localStorage.getItem("cv11_token");
+  const headers = { ...(options.headers || {}) };
+
+  if (options.body && typeof options.body !== "string") {
+    headers["Content-Type"] = "application/json";
+    options.body = JSON.stringify(options.body);
+  }
+
+  if (token) headers.Authorization = token;
+
+  const response = await fetch(CV11_BACKEND + path, {
+    ...options,
+    headers
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data.message || "Something went wrong.");
+  }
+
+  return data;
+}
+
+function cv11Message(id, message) {
+  document.getElementById(id).textContent = message;
+}
+
+/* REGISTER */
+async function cv11Register() {
+  const username = document.getElementById("cv11-username").value.trim();
+  const password = document.getElementById("cv11-password").value;
+
+  if (!username || password.length < 8) {
+    return cv11Message(
+      "cv11-account-message",
+      "Enter a username and a password of at least 8 characters."
+    );
+  }
+
+  try {
+    const data = await cv11API("/api/collections/users/records", {
+      method: "POST",
+      body: {
+        username,
+        password,
+        passwordConfirm: password
+      }
+    });
+
+    cv11Message("cv11-account-message", "Account created! Log in now.");
+  } catch (error) {
+    cv11Message("cv11-account-message", error.message);
+  }
+}
+
+/* LOGIN */
+async function cv11Login() {
+  const username = document.getElementById("cv11-username").value.trim();
+  const password = document.getElementById("cv11-password").value;
+
+  try {
+    const data = await cv11API(
+      "/api/collections/users/auth-with-password",
+      {
+        method: "POST",
+        body: { identity: username, password }
+      }
+    );
+
+    localStorage.setItem("cv11_token", data.token);
+    localStorage.setItem("cv11_user", JSON.stringify(data.record));
+
+    cv11Message("cv11-account-message", "Welcome, " + data.record.username + "!");
+    cv11UpdateAccount();
+    cv11LoadComments();
+  } catch (error) {
+    cv11Message("cv11-account-message", error.message);
+  }
+}
+
+/* LOGOUT */
+function cv11Logout() {
+  localStorage.removeItem("cv11_token");
+  localStorage.removeItem("cv11_user");
+  cv11UpdateAccount();
+  cv11LoadComments();
+}
+
+/* ACCOUNT DISPLAY */
+function cv11UpdateAccount() {
+  const user = JSON.parse(localStorage.getItem("cv11_user") || "null");
+  document.getElementById("cv11-status").textContent =
+    user ? "Logged in as " + user.username : "Not logged in";
+
+  document.getElementById("cv11-logout").style.display =
+    user ? "inline-block" : "none";
+}
+
+/* POST COMMENT */
+async function cv11PostComment() {
+  const user = JSON.parse(localStorage.getItem("cv11_user") || "null");
+  const message = document.getElementById("cv11-message").value.trim();
+
+  if (!user || !localStorage.getItem("cv11_token")) {
+    return cv11Message("cv11-comment-message", "Log in before commenting.");
+  }
+
+  if (!message) {
+    return cv11Message("cv11-comment-message", "Write a comment first.");
+  }
+
+  try {
+    await cv11API("/api/collections/comments/records", {
+      method: "POST",
+      body: {
+        user: user.id,
+        username: user.username,
+        message
+      }
+    });
+
+    document.getElementById("cv11-message").value = "";
+    cv11Message("cv11-comment-message", "Comment posted!");
+    cv11LoadComments();
+  } catch (error) {
+    cv11Message("cv11-comment-message", error.message);
+  }
+}
+
+/* LOAD COMMENTS */
+async function cv11LoadComments() {
+  const area = document.getElementById("cv11-comments");
+
+  try {
+    const data = await cv11API(
+      "/api/collections/comments/records?sort=-created&perPage=30"
+    );
+
+    area.replaceChildren();
+
+    if (!data.items.length) {
+      area.textContent = "No comments yet. Be the first!";
+      return;
+    }
+
+    data.items.forEach(comment => {
+      const div = document.createElement("div");
+      div.className = "cv11-comment";
+
+      const name = document.createElement("b");
+      name.textContent = comment.username || "Player";
+
+      const message = document.createElement("p");
+      message.textContent = comment.message;
+
+      const date = document.createElement("small");
+      date.className = "cv11-muted";
+      date.textContent = new Date(comment.created).toLocaleString();
+
+      div.append(name, message, date);
+      area.appendChild(div);
+    });
+  } catch (error) {
+    area.textContent = "Comments unavailable. Check backend settings.";
+  }
+}
+
+/* VISITOR COUNTER
+   Counts once per browser session.
+   Each visit creates one record.
+*/
+async function cv11TrackVisit() {
+  if (sessionStorage.getItem("cv11_counted")) {
+    return cv11LoadViews();
+  }
+
+  try {
+    await cv11API("/api/collections/site_visits/records", {
+      method: "POST",
+      body: {}
+    });
+
+    sessionStorage.setItem("cv11_counted", "yes");
+    cv11LoadViews();
+  } catch (error) {
+    document.getElementById("cv11-views").textContent = "Unavailable";
+  }
+}
+
+async function cv11LoadViews() {
+  try {
+    const data = await cv11API(
+      "/api/collections/site_visits/records?perPage=1"
+    );
+
+    document.getElementById("cv11-views").textContent =
+      Number(data.totalItems).toLocaleString();
+  } catch (error) {
+    document.getElementById("cv11-views").textContent = "Unavailable";
+  }
+}
+
+/* N64 DATABASE CARD */
+(function cv11AddN64Card() {
+  const database = document.getElementById("cvDatabase");
+  if (!database || document.getElementById("cv11-n64-card")) return;
+
+  const card = document.createElement("div");
+  card.id = "cv11-n64-card";
+  card.className = "cv-console-card";
+  card.style.cursor = "pointer";
+
+  card.innerHTML = `
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Nintendo-64-Console-Set.png"
+      alt="Nintendo 64"
+      style="width:100%;border-radius:10px;">
+    <h3>Nintendo 64</h3>
+    <p>1996 · Fifth generation</p>
+    <button type="button">Explore console →</button>
+  `;
+
+  card.addEventListener("click", cvOpenN64);
+  database.appendChild(card);
+})();
+
+/* NAVIGATION */
+(function cv11Navigation() {
+  const originalHide = window.cvHidePages;
+
+  window.cvHidePages = function() {
+    if (typeof originalHide === "function") originalHide();
+
+    const n64 = document.getElementById("cvN64");
+    if (n64) n64.style.display = "none";
+  };
+
+  window.cvOpenN64 = function() {
+    window.cvHidePages();
+    document.getElementById("cvN64").style.display = "block";
+    window.scrollTo(0, 0);
+  };
+})();
+
+/* INITIALIZE */
+if (CV11_BACKEND !== "YOUR_POCKETBASE_URL") {
+  cv11UpdateAccount();
+  cv11LoadComments();
+  cv11TrackVisit();
+} else {
+  cv11Message(
+    "cv11-account-message",
+    "Connect your PocketBase URL in the configuration to activate accounts."
+  );
+  document.getElementById("cv11-comments").textContent =
+    "Connect your backend to activate comments.";
+  document.getElementById("cv11-views").textContent = "—";
+}
+</script>
+
+<!-- ==========================================
+     CONSOLEVERSE 1.1 — NINTENDO 64 PAGE
+     Paste at the VERY BOTTOM of index.html
+     ========================================== -->
+
+<style>
+/* N64 PAGE */
+#cvN64 {
+  display: none;
+  background: #101010;
+  color: #f5f5f5;
+  min-height: 100vh;
+  padding: 25px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+#cvN64 * {
+  box-sizing: border-box;
+}
+
+#cvN64 .n64-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+#cvN64 button {
+  background: #92283b;
+  color: white;
+  border: none;
+  padding: 11px 17px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#cvN64 button:hover {
+  background: #bd344b;
+}
+
+#cvN64 h1 {
+  color: #76df8b;
+  font-size: clamp(35px, 7vw, 65px);
+  margin-bottom: 5px;
+}
+
+#cvN64 h2 {
+  color: #ffcf62;
+  border-bottom: 2px solid #444;
+  padding-bottom: 9px;
+}
+
+#cvN64 .n64-subtitle {
+  color: #bbb;
+  font-size: 18px;
+}
+
+#cvN64 .n64-hero {
+  background: linear-gradient(135deg, #173c25, #111);
+  border: 1px solid #386448;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+#cvN64 .n64-hero img {
+  width: 100%;
+  max-width: 570px;
+  object-fit: contain;
+  margin: 15px auto;
+  display: block;
+}
+
+#cvN64 .n64-panel {
+  background: #202020;
+  border: 1px solid #393939;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+#cvN64 .n64-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+#cvN64 .n64-spec {
+  background: #292929;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+#cvN64 .n64-spec b {
+  color: #76df8b;
+  display: block;
+  margin-bottom: 6px;
+}
+
+#cvN64 .n64-games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+#cvN64 .n64-game {
+  background: #292929;
+  border-radius: 9px;
+  padding: 15px;
+  border-left: 4px solid #76df8b;
+}
+
+#cvN64 .n64-game b {
+  color: #ffcf62;
+}
+
+#cvN64 .n64-muted {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+#cvN64 .n64-stat {
+  font-size: 32px;
+  font-weight: bold;
+  color: #76df8b;
+}
+
+#cvN64 .n64-footer {
+  text-align: center;
+  color: #888;
+  padding: 25px;
+}
+</style>
+
+<section id="cvN64">
+
+  <div class="n64-top">
+    <button onclick="cvN64Home()">← Home</button>
+    <button onclick="cvN64Database()">← Console database</button>
+  </div>
+
+  <h1>NINTENDO 64</h1>
+  <p class="n64-subtitle">
+    1996 · Nintendo · Fifth generation
+  </p>
+
+  <!-- CONSOLE INTRODUCTION -->
+  <div class="n64-hero">
+    <h2>The 64-bit era</h2>
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Nintendo-64-Console-Set.png"
+      alt="Nintendo 64 console and controller">
+    <p>
+      Nintendo's leap into 3D gaming. The Nintendo 64 brought
+      groundbreaking 3D adventures, multiplayer experiences,
+      and some of gaming's most recognizable titles.
+    </p>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="n64-panel">
+    <h2>Console overview</h2>
+    <p>
+      The Nintendo 64 launched in Japan in June 1996 and
+      North America in September 1996. It was Nintendo's
+      successor to the Super Nintendo Entertainment System.
+    </p>
+    <p>
+      Unlike many competitors that moved to CD-based games,
+      Nintendo continued using cartridges. The console became
+      famous for its 3D platformers, local multiplayer, and
+      distinctive controller.
+    </p>
+  </div>
+
+  <!-- SPECIFICATIONS -->
+  <div class="n64-panel">
+    <h2>Hardware specifications</h2>
+
+    <div class="n64-grid">
+      <div class="n64-spec">
+        <b>CPU</b>
+        NEC VR4300
+      </div>
+
+      <div class="n64-spec">
+        <b>Architecture</b>
+        64-bit
+      </div>
+
+      <div class="n64-spec">
+        <b>CPU clock</b>
+        93.75 MHz
+      </div>
+
+      <div class="n64-spec">
+        <b>Main memory</b>
+        4 MB RDRAM
+      </div>
+
+      <div class="n64-spec">
+        <b>Expansion Pak</b>
+        Adds another 4 MB
+      </div>
+
+      <div class="n64-spec">
+        <b>Graphics</b>
+        Reality Co-Processor
+      </div>
+
+      <div class="n64-spec">
+        <b>Media</b>
+        ROM cartridges
+      </div>
+
+      <div class="n64-spec">
+        <b>Generation</b>
+        Fifth generation
+      </div>
+
+      <div class="n64-spec">
+        <b>Common resolution</b>
+        320 × 240
+      </div>
+
+      <div class="n64-spec">
+        <b>Release year</b>
+        1996
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTROLLER -->
+  <div class="n64-panel">
+    <h2>The controller</h2>
+
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Nintendo-64-Controller-Gray.jpg"
+      alt="Nintendo 64 controller"
+      style="width:100%;max-width:440px;display:block;margin:15px auto;">
+
+    <p>
+      The Nintendo 64 controller featured a unique three-pronged
+      design. Its central analog stick helped make precise 3D
+      movement possible on a home console.
+    </p>
+
+    <p>
+      It also featured the iconic A and B buttons, a D-pad,
+      shoulder buttons, a Z trigger, and a C-button cluster.
+    </p>
+
+    <p class="n64-muted">
+      The controller helped establish analog sticks as an
+      important part of 3D console gaming.
+    </p>
+  </div>
+
+  <!-- GAMES -->
+  <div class="n64-panel">
+    <h2>Iconic games</h2>
+
+    <div class="n64-games">
+      <div class="n64-game">
+        <b>Super Mario 64</b>
+        <p class="n64-muted">A landmark 3D platformer.</p>
+      </div>
+
+      <div class="n64-game">
+        <b>The Legend of Zelda: Ocarina of Time</b>
+        <p class="n64-muted">A legendary 3D adventure.</p>
+      </div>
+
+      <div class="n64-game">
+        <b>Mario Kart 64</b>
+        <p class="n64-muted">Classic multiplayer racing.</p>
+      </div>
+
+      <div class="n64-game">
+        <b>GoldenEye 007</b>
+        <p class="n64-muted">A major console shooter.</p>
+      </div>
+
+      <div class="n64-game">
+        <b>Super Smash Bros.</b>
+        <p class="n64-muted">The beginning of a crossover series.</p>
+      </div>
+
+      <div class="n64-game">
+        <b>Banjo-Kazooie</b>
+        <p class="n64-muted">A beloved 3D platforming adventure.</p>
+      </div>
+
+      <div class="n64-game">
+        <b>Star Fox 64</b>
+        <p class="n64-muted">A memorable space shooter.</p>
+      </div>
+
+      <div class="n64-game">
+        <b>Donkey Kong 64</b>
+        <p class="n64-muted">A huge 3D collectathon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="n64-panel">
+    <h2>What made it special?</h2>
+
+    <ul>
+      <li>Analog stick controls for 3D movement.</li>
+      <li>Four controller ports built into the console.</li>
+      <li>Cartridge-based games with fast loading.</li>
+      <li>The Expansion Pak upgraded available memory.</li>
+      <li>Innovative 3D worlds and camera systems.</li>
+      <li>Rumble Pak support for compatible games.</li>
+    </ul>
+  </div>
+
+  <!-- SALES -->
+  <div class="n64-panel">
+    <h2>Sales and legacy</h2>
+
+    <div class="n64-stat">32.93 million</div>
+    <p class="n64-muted">Approximate worldwide hardware sales.</p>
+
+    <p>
+      The Nintendo 64 helped shape the future of 3D gaming.
+      Its influence can be seen in platformers, adventure games,
+      multiplayer titles, and controller design.
+    </p>
+  </div>
+
+  <div class="n64-footer">
+    CONSOLEVERSE · NINTENDO 64 DATABASE ENTRY
+  </div>
+
+  <button onclick="cvN64Database()">Back to console database</button>
+
+</section>
+
+<script>
+/* ==========================================
+   N64 NAVIGATION
+   ========================================== */
+
+function cvOpenN64() {
+  if (typeof cvHidePages === "function") {
+    cvHidePages();
+  } else {
+    document.querySelector(".hero").style.display = "none";
+    document.getElementById("cvDatabase").style.display = "none";
+    document.getElementById("cvNES").style.display = "none";
+    document.getElementById("cvSNES").style.display = "none";
+  }
+
+  document.getElementById("cvN64").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+function cvN64Home() {
+  document.getElementById("cvN64").style.display = "none";
+  cvGoHome();
+}
+
+function cvN64Database() {
+  document.getElementById("cvN64").style.display = "none";
+  cvShowDatabase();
+}
+
+/* ==========================================
+   ADD N64 TO THE DATABASE
+   ========================================== */
+
+(function addN64ToDatabase() {
+  const database = document.getElementById("cvDatabase");
+
+  if (!database || document.getElementById("cvN64Card")) return;
+
+  const card = document.createElement("div");
+  card.id = "cvN64Card";
+  card.className = "cv-console-card";
+  card.style.cursor = "pointer";
+
+  card.innerHTML = `
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Nintendo-64-Console-Set.png"
+      alt="Nintendo 64"
+      style="width:100%;border-radius:10px;">
+    <h3>Nintendo 64</h3>
+    <p>1996 · Fifth generation</p>
+    <button type="button">Explore console →</button>
+  `;
+
+  card.addEventListener("click", cvOpenN64);
+  database.appendChild(card);
+})();
+</script>
+
+<!-- ==========================================
+     CONSOLEVERSE 1.1 — N64 REPAIR PATCH
+     ========================================== -->
+
+<style>
+/* Keep the community section off console detail pages */
+#cv11 {
+  transition: none;
+}
+
+/* N64 image sizing */
+#cvN64 img,
+#cvN64Card img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+</style>
+
+<script>
+(function cvN64Repair() {
+
+  /* 1. FIX ALL N64 IMAGES */
+  const n64Image =
+    "https://commons.wikimedia.org/wiki/Special:FilePath/N64-Console-Set.jpg";
+
+  document.querySelectorAll(
+    "#cvN64 img, #cvN64Card img"
+  ).forEach(img => {
+    img.src = n64Image;
+    img.alt = "Nintendo 64 console and controller";
+  });
+
+  /* 2. FIX PAGE NAVIGATION */
+  const oldHide = window.cvHidePages;
+  const oldHome = window.cvGoHome;
+  const oldDatabase = window.cvShowDatabase;
+  const oldNES = window.cvOpenNES;
+  const oldSNES = window.cvOpenSNES;
+
+  window.cvHidePages = function() {
+    if (typeof oldHide === "function") oldHide();
+
+    const community = document.getElementById("cv11");
+    const n64 = document.getElementById("cvN64");
+
+    if (community) community.style.display = "none";
+    if (n64) n64.style.display = "none";
+  };
+
+  window.cvGoHome = function() {
+    if (typeof oldHome === "function") oldHome();
+
+    const community = document.getElementById("cv11");
+    if (community) community.style.display = "block";
+  };
+
+  window.cvShowDatabase = function() {
+    if (typeof oldDatabase === "function") oldDatabase();
+  };
+
+  window.cvOpenNES = function() {
+    if (typeof oldNES === "function") oldNES();
+  };
+
+  window.cvOpenSNES = function() {
+    if (typeof oldSNES === "function") oldSNES();
+  };
+
+  /* 3. ADD N64 QUICK STATISTICS */
+  const n64Page = document.getElementById("cvN64");
+
+  if (n64Page && !document.getElementById("cvN64QuickStats")) {
+    const stats = document.createElement("div");
+
+    stats.id = "cvN64QuickStats";
+    stats.className = "n64-panel";
+
+    stats.innerHTML = `
+      <h2>📊 Nintendo 64 — Quick statistics</h2>
+
+      <div class="n64-grid">
+
+        <div class="n64-spec">
+          <b>Worldwide sales</b>
+          <span class="n64-stat">32.93M</span>
+          Consoles sold
+        </div>
+
+        <div class="n64-spec">
+          <b>Launch year</b>
+          <span class="n64-stat">1996</span>
+          Japan and North America
+        </div>
+
+        <div class="n64-spec">
+          <b>Memory</b>
+          <span class="n64-stat">4 MB</span>
+          Base RDRAM
+        </div>
+
+        <div class="n64-spec">
+          <b>Controller ports</b>
+          <span class="n64-stat">4</span>
+          Built into the console
+        </div>
+
+        <div class="n64-spec">
+          <b>CPU speed</b>
+          <span class="n64-stat">93.75</span>
+          MHz
+        </div>
+
+        <div class="n64-spec">
+          <b>Generation</b>
+          <span class="n64-stat">5th</span>
+          Fifth-generation console
+        </div>
+
+      </div>
+    `;
+
+    const panels = n64Page.querySelectorAll(".n64-panel");
+
+    /* Place statistics immediately after hardware specifications */
+    const specsPanel = Array.from(panels).find(panel =>
+      panel.querySelector("h2")?.textContent.includes(
+        "Hardware specifications"
+      )
+    );
+
+    if (specsPanel) {
+      specsPanel.after(stats);
+    } else {
+      n64Page.appendChild(stats);
+    }
+  }
+
+})();
+</script>
+
+<style>
+#cvExtraSettings {
+  background: #11131c;
+  color: #eeeef5;
+  padding: 25px;
+  border-radius: 18px;
+  max-width: 950px;
+  margin: 30px auto;
+  font-family: Arial, sans-serif;
+}
+#cvExtraSettings h2 { color: #ffcc66; }
+#cvExtraSettings .cv-setting {
+  background: #202332;
+  border: 1px solid #34394c;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+#cvExtraSettings button,
+#cvExtraSettings select {
+  background: #713d55;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+#cvExtraSettings button:hover { background: #a34d70; }
+#cvExtraSettings input { accent-color: #ff9cbd; }
+#cvExtraSettings .cv-description {
+  color: #aeb4c8;
+  font-size: 13px;
+  margin-top: 5px;
+}
+#cvMystery {
+  background: #080a12;
+  border: 1px solid #65517e;
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 25px;
+  text-align: center;
+}
+#cvMystery h3 {
+  color: #c9a4ff;
+  letter-spacing: 3px;
+}
+#cvLoreLine {
+  min-height: 55px;
+  color: #c8c5d8;
+  font-family: monospace;
+  line-height: 1.7;
+  margin: 20px 0;
+}
+#cvLoreCount { color: #9d8db6; font-size: 12px; }
+#cvMystery button { background: #49345e; }
+#cvMystery button:disabled { opacity: .4; cursor: default; }
+</style>
+
+<section id="cvExtraSettings">
+  <h2>⚙️ CONSOLEVERSE — EXTRA SETTINGS</h2>
+  <p class="cv-description">More control. More personality. More secrets.</p>
+
+  <div class="cv-setting">
+    <div>
+      <strong>CRT Monitor Effect</strong>
+      <div class="cv-description">Add retro scanlines to the encyclopedia.</div>
+    </div>
+    <input type="checkbox" id="cvCRT">
+  </div>
+
+  <div class="cv-setting">
+    <div>
+      <strong>Random Boot Messages</strong>
+      <div class="cv-description">Show a random system message when you visit.</div>
+    </div>
+    <input type="checkbox" id="cvBoot">
+  </div>
+
+  <div class="cv-setting">
+    <div>
+      <strong>Pixel Party</strong>
+      <div class="cv-description">Celebrate your love of gaming with pixels.</div>
+    </div>
+    <button id="cvParty">START PARTY 🎉</button>
+  </div>
+
+  <div class="cv-setting">
+    <div>
+      <strong>Console Trivia</strong>
+      <div class="cv-description">Choose how often trivia appears.</div>
+    </div>
+    <select id="cvTrivia">
+      <option value="off">Off</option>
+      <option value="sometimes">Sometimes</option>
+      <option value="always">Every visit</option>
+    </select>
+  </div>
+
+  <div class="cv-setting">
+    <div>
+      <strong>Gaming Generation Badge</strong>
+      <div class="cv-description">Choose your favorite gaming era.</div>
+    </div>
+    <select id="cvGeneration">
+      <option>8-bit era</option>
+      <option>16-bit era</option>
+      <option>32/64-bit era</option>
+      <option>Sixth generation</option>
+      <option>HD era</option>
+      <option>Modern era</option>
+    </select>
+  </div>
+
+  <div class="cv-setting">
+    <div>
+      <strong>Reset Extra Settings</strong>
+      <div class="cv-description">Restore these new settings to their defaults.</div>
+    </div>
+    <button id="cvReset">RESET TO DEFAULT</button>
+  </div>
+
+  <div id="cvMystery">
+    <h3>PROJECT: UNKNOWN</h3>
+    <p class="cv-description">An unidentified file has been discovered in the CONSOLEVERSE archive.</p>
+    <div id="cvLoreLine">FILE LOCKED. 15 ENTRIES DETECTED.</div>
+    <div id="cvLoreCount">0 / 15 entries recovered</div>
+    <button id="cvLoreNext">RECOVER NEXT ENTRY</button>
+  </div>
+
+  <p id="cvBootMessage" class="cv-description"></p>
+  <p id="cvTriviaMessage" style="color:#ffcc88;"></p>
+</section>
+
+<style id="cvCRTStyle">
+body.cv-crt::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,.13) 4px
+  );
+}
+</style>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const keys = {
+    crt: "cv11_crt",
+    boot: "cv11_boot",
+    trivia: "cv11_trivia",
+    generation: "cv11_generation",
+    lore: "cv11_lore"
+  };
+
+  const trivia = [
+    "The NES helped revive the North American video game market.",
+    "The GameCube used miniature optical discs.",
+    "The Dreamcast launched before the PlayStation 2.",
+    "The N64 used cartridges instead of optical discs.",
+    "The SNES had a special graphics mode called Mode 7."
+  ];
+
+  const messages = [
+    "SYSTEM ONLINE. WELCOME BACK.",
+    "LOADING CONSOLE DATABASE...",
+    "ALL SYSTEMS OPERATIONAL.",
+    "ARCHIVE ACCESS GRANTED.",
+    "ANOTHER DAY IN GAMING HISTORY."
+  ];
+
+  const lore = [
+    "ENTRY 01: The archive was created before CONSOLEVERSE existed.",
+    "ENTRY 02: Its original purpose was never documented.",
+    "ENTRY 03: Someone labeled the first file PLAYER_ZERO.",
+    "ENTRY 04: The file contains records of forgotten machines.",
+    "ENTRY 05: One console appears in the records without a name.",
+    "ENTRY 06: Its release date is listed as NEVER.",
+    "ENTRY 07: Its manufacturer is listed as UNKNOWN.",
+    "ENTRY 08: Every record ends with the same strange symbol.",
+    "ENTRY 09: The symbol does not match any known company logo.",
+    "ENTRY 10: A hidden directory was found beneath the archive.",
+    "ENTRY 11: The directory contains a single message: KEEP PLAYING.",
+    "ENTRY 12: The message was last modified yesterday.",
+    "ENTRY 13: The archive suddenly gained a new entry.",
+    "ENTRY 14: Its title was CONSOLEVERSE.",
+    "ENTRY 15: YOU WERE NEVER JUST READING THE ARCHIVE."
+  ];
+
+  // Restore saved settings
+  $("cvCRT").checked = localStorage.getItem(keys.crt) === "true";
+  $("cvBoot").checked = localStorage.getItem(keys.boot) === "true";
+  $("cvTrivia").value = localStorage.getItem(keys.trivia) || "off";
+  $("cvGeneration").value = localStorage.getItem(keys.generation) || "8-bit era";
+
+  document.body.classList.toggle("cv-crt", $("cvCRT").checked);
+
+  $("cvCRT").onchange = () => {
+    localStorage.setItem(keys.crt, $("cvCRT").checked);
+    document.body.classList.toggle("cv-crt", $("cvCRT").checked);
+  };
+
+  $("cvBoot").onchange = () => {
+    localStorage.setItem(keys.boot, $("cvBoot").checked);
+    showBoot();
+  };
+
+  $("cvTrivia").onchange = () => {
+    localStorage.setItem(keys.trivia, $("cvTrivia").value);
+    showTrivia();
+  };
+
+  $("cvGeneration").onchange = () => {
+    localStorage.setItem(keys.generation, $("cvGeneration").value);
+  };
+
+  function showBoot() {
+    $("cvBootMessage").textContent = $("cvBoot").checked
+      ? messages[Math.floor(Math.random() * messages.length)]
+      : "";
+  }
+
+  function showTrivia() {
+    const mode = $("cvTrivia").value;
+    $("cvTriviaMessage").textContent =
+      mode === "off" ? "" :
+      mode === "always" || Math.random() < .5
+        ? "🎮 DID YOU KNOW? " + trivia[Math.floor(Math.random() * trivia.length)]
+        : "";
+  }
+
+  showBoot();
+  showTrivia();
+
+  // Pixel party
+  $("cvParty").onclick = () => {
+    const party = document.createElement("div");
+    party.style.cssText =
+      "position:fixed;inset:0;pointer-events:none;z-index:100000;overflow:hidden";
+    document.body.appendChild(party);
+
+    for (let i = 0; i < 75; i++) {
+      const pixel = document.createElement("div");
+      pixel.textContent = ["◆","■","★","▪"][i % 4];
+      pixel.style.cssText = `
+        position:absolute;
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        font-size:${12+Math.random()*25}px;
+        color:${["#ff6b9d","#ffc857","#79e0c3","#a88bff"][i%4]};
+        animation:cvPixelFall 1.5s ease-out forwards;
+      `;
+      party.appendChild(pixel);
+    }
+
+    setTimeout(() => party.remove(), 1800);
+  };
+
+  if (!document.getElementById("cvPixelAnimation")) {
+    const style = document.createElement("style");
+    style.id = "cvPixelAnimation";
+    style.textContent = `
+      @keyframes cvPixelFall {
+        from { transform:translateY(-30px) rotate(0deg); opacity:1; }
+        to { transform:translateY(100px) rotate(360deg); opacity:0; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Sequential mystery archive
+  let recovered = Math.min(
+    15,
+    Math.max(0, Number(localStorage.getItem(keys.lore) || 0))
+  );
+
+  function updateLore() {
+    $("cvLoreLine").textContent = recovered === 0
+      ? "FILE LOCKED. 15 ENTRIES DETECTED."
+      : lore[recovered - 1];
+
+    $("cvLoreCount").textContent = recovered + " / 15 entries recovered";
+
+    $("cvLoreNext").textContent = recovered === 15
+      ? "ARCHIVE COMPLETE"
+      : "RECOVER NEXT ENTRY";
+
+    $("cvLoreNext").disabled = recovered === 15;
+  }
+
+  $("cvLoreNext").onclick = () => {
+    if (recovered >= 15) return;
+    recovered++;
+    localStorage.setItem(keys.lore, recovered);
+    updateLore();
+  };
+
+  updateLore();
+
+  // Reset only this expansion's settings
+  $("cvReset").onclick = () => {
+    if (!confirm("Reset all extra CONSOLEVERSE settings?")) return;
+
+    Object.values(keys).forEach(key => localStorage.removeItem(key));
+
+    $("cvCRT").checked = false;
+    $("cvBoot").checked = false;
+    $("cvTrivia").value = "off";
+    $("cvGeneration").value = "8-bit era";
+
+    document.body.classList.remove("cv-crt");
+    showBoot();
+    showTrivia();
+  };
+})();
+</script>
+
+<script>
+(function () {
+  // Keep the original navigation functions intact.
+  const originalHide = window.cvHidePages;
+  const originalHome = window.cvGoHome;
+  const originalDatabase = window.cvShowDatabase;
+
+  // Hide extra settings whenever navigating away from home.
+  window.cvHidePages = function () {
+    if (originalHide) originalHide();
+
+    const settings = document.getElementById("cvExtraSettings");
+    const gamecube = document.getElementById("cvGameCube");
+
+    if (settings) settings.style.display = "none";
+    if (gamecube) gamecube.style.display = "none";
+  };
+
+  // Show settings again on the homepage.
+  window.cvGoHome = function () {
+    if (originalHome) originalHome();
+
+    const settings = document.getElementById("cvExtraSettings");
+    if (settings) settings.style.display = "block";
+  };
+
+  // Ensure settings stay hidden in the database.
+  window.cvShowDatabase = function () {
+    if (originalDatabase) originalDatabase();
+
+    const settings = document.getElementById("cvExtraSettings");
+    if (settings) settings.style.display = "none";
+  };
+})();
+</script>
+
+<style>
+#cvGameCube {
+  display: none;
+  max-width: 1050px;
+  margin: 25px auto;
+  padding: 24px;
+  background: #171923;
+  color: #f4f4f8;
+  border-radius: 18px;
+  font-family: Arial, sans-serif;
+}
+#cvGameCube h1 { color: #b69cff; }
+#cvGameCube h2 {
+  color: #d5c6ff;
+  border-bottom: 1px solid #444052;
+  padding-bottom: 8px;
+}
+#cvGameCube .gc-panel {
+  background: #242634;
+  padding: 17px;
+  border-radius: 12px;
+  margin: 15px 0;
+}
+#cvGameCube .gc-specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 10px;
+}
+#cvGameCube .gc-spec {
+  background: #303344;
+  padding: 12px;
+  border-radius: 9px;
+}
+#cvGameCube button {
+  background: #7051a8;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 17px;
+  cursor: pointer;
+  margin: 5px;
+}
+#cvGameCube button:hover { background: #906fd0; }
+#cvGameCube .gc-games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 12px;
+}
+#cvGameCube .gc-game {
+  background: #303344;
+  padding: 14px;
+  border-radius: 10px;
+}
+#cvGameCube img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #101116;
+}
+#cvGCEntry {
+  background: linear-gradient(135deg,#28213d,#171923);
+  border: 1px solid #7051a8;
+  border-radius: 13px;
+  padding: 17px;
+  margin: 15px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+#cvGCEntry:hover { border-color: #c5a8ff; }
+</style>
+
+<section id="cvGameCube">
+
+  <button onclick="cvShowDatabase()">← Back to database</button>
+  <button onclick="cvGoHome()">⌂ Home</button>
+
+  <h1>NINTENDO GAMECUBE</h1>
+  <p style="color:#b7a7db;">Nintendo's sixth-generation console • 2001</p>
+
+  <div class="gc-panel">
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/GameCube-Console-Set.png"
+      alt="Nintendo GameCube console and controller"
+      onerror="this.style.display='none'"
+    >
+    <h2>Overview</h2>
+    The Nintendo GameCube was released in 2001 in Japan and North America.
+    It was Nintendo's successor to the Nintendo 64 and competed with the
+    PlayStation 2 and original Xbox.
+
+    Its compact design, distinctive controller, and mini optical discs
+    made it one of Nintendo's most recognizable consoles.
+  </div>
+
+  <div class="gc-panel">
+    <h2>Hardware specifications</h2>
+    <div class="gc-specs">
+      <div class="gc-spec"><strong>CPU</strong><br>IBM Gekko</div>
+      <div class="gc-spec"><strong>CPU speed</strong><br>485 MHz</div>
+      <div class="gc-spec"><strong>GPU</strong><br>ATI Flipper</div>
+      <div class="gc-spec"><strong>GPU speed</strong><br>162 MHz</div>
+      <div class="gc-spec"><strong>Main RAM</strong><br>24 MB 1T-SRAM</div>
+      <div class="gc-spec"><strong>Additional RAM</strong><br>16 MB DRAM</div>
+      <div class="gc-spec"><strong>Embedded memory</strong><br>3 MB</div>
+      <div class="gc-spec"><strong>Storage</strong><br>1.5 GB mini-DVD</div>
+      <div class="gc-spec"><strong>Resolution</strong><br>Up to 640 × 480</div>
+      <div class="gc-spec"><strong>Generation</strong><br>Sixth generation</div>
+    </div>
+  </div>
+
+  <div class="gc-panel">
+    <h2>The controller</h2>
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/GameCube-controller.png"
+      alt="Nintendo GameCube controller"
+      onerror="this.style.display='none'"
+    >
+    The GameCube controller featured:
+    <ul>
+      <li>Two analog sticks</li>
+      <li>A large A button</li>
+      <li>B, X and Y face buttons</li>
+      <li>Pressure-sensitive L and R triggers</li>
+      <li>A Z shoulder button</li>
+      <li>Built-in rumble support</li>
+    </ul>
+    Its unusual button layout became iconic and remained popular with
+    competitive Super Smash Bros. players.
+  </div>
+
+  <div class="gc-panel">
+    <h2>Notable games</h2>
+    <div class="gc-games">
+      <div class="gc-game">
+        <strong>Super Mario Sunshine</strong>
+        <p>Mario explores Isle Delfino using FLUDD.</p>
+      </div>
+      <div class="gc-game">
+        <strong>The Legend of Zelda: The Wind Waker</strong>
+        <p>A colorful ocean adventure.</p>
+      </div>
+      <div class="gc-game">
+        <strong>Metroid Prime</strong>
+        <p>Samus makes the jump to first-person exploration.</p>
+      </div>
+      <div class="gc-game">
+        <strong>Super Smash Bros. Melee</strong>
+        <p>A legendary fighting game.</p>
+      </div>
+      <div class="gc-game">
+        <strong>Luigi's Mansion</strong>
+        <p>Luigi explores a haunted mansion.</p>
+      </div>
+      <div class="gc-game">
+        <strong>Mario Kart: Double Dash!!</strong>
+        <p>Two characters share one kart.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gc-panel">
+    <h2>Special features</h2>
+    <ul>
+      <li>Four built-in controller ports.</li>
+      <li>Memory cards for saving games.</li>
+      <li>Game Boy Player accessory for Game Boy games.</li>
+      <li>Broadband and modem adapters for selected online features.</li>
+      <li>Link connectivity with the Game Boy Advance.</li>
+      <li>Digital AV output on certain early hardware revisions.</li>
+    </ul>
+  </div>
+
+  <div class="gc-panel">
+    <h2>Sales and legacy</h2>
+    <div class="gc-specs">
+      <div class="gc-spec">
+        <strong>Worldwide hardware sales</strong>
+        <h2>21.74 million</h2>
+      </div>
+      <div class="gc-spec">
+        <strong>Launch year</strong>
+        <h2>2001</h2>
+      </div>
+    </div>
+    Despite selling fewer consoles than its main competitors,
+    the GameCube developed a dedicated fanbase and introduced
+    several beloved Nintendo games.
+  </div>
+
+  <div class="gc-panel">
+    <h2>CONSOLEVERSE verdict</h2>
+    A distinctive sixth-generation console with a fantastic library,
+    memorable controller, and some seriously influential games.
+  </div>
+
+  <button onclick="cvShowDatabase()">← Return to database</button>
+  <button onclick="cvGoHome()">Return home</button>
+
+</section>
+
+<script>
+function cvOpenGameCube() {
+  cvHidePages();
+
+  document.getElementById("cvGameCube").style.display = "block";
+
+  window.scrollTo(0, 0);
+}
+
+// Add GameCube to the existing console database.
+(function () {
+  const database = document.getElementById("cvDatabase");
+
+  if (!database || document.getElementById("cvGCEntry")) return;
+
+  const card = document.createElement("div");
+  card.id = "cvGCEntry";
+  card.innerHTML = `
+    <div style="font-size:34px;">🎮</div>
+    <h2>Nintendo GameCube</h2>
+    <p>Sixth generation • 2001</p>
+    <p>Click to explore →</p>
+  `;
+
+  card.onclick = cvOpenGameCube;
+  database.appendChild(card);
+})();
+</script>
+
 </body>
 </html>
